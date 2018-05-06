@@ -1,0 +1,24 @@
+<div class=" signup">
+    <button class=" btn btn-info animated bounce signupbtn"  data-toggle="modal" data-target="#signinup">Sign In</button>
+</div>
+<!--First Modal-->
+<div class="modal fade " id="signinup">
+    <div class="modal-dialog modal-content">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="modal-header">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Please Enter the email", class: "form-control" %>
+          <%= f.password_field :password, autocomplete: "off", placeholder: "Please Enter the Password", class: "form-control" %>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="remember-field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+        </div>
+        <div class="modal-body start">
+          <%= f.submit "Log in", class: "btn btn-info animated bounceInRight" %>
+        </div>
+      <% end %>
+    </div>
+</div>

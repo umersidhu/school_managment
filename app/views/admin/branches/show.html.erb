@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 form-card">
+      <div class="card">
+        <div class="heading">
+          <h3 class="text-center"><%= @branch.branch_name %></h3>
+        </div>
+        <table class="table table-stripped">
+        	<tr>
+        		<td>School Name:</td>
+        		<td><%= @branch.school.name%></td>
+        	</tr>
+        	<tr>
+        		<td>Cover Image</td>
+        		<td><%= image_tag(@branch.cover.url, class: "branch-img") %></td>
+        	</tr>
+        	<tr>
+        		<td>Branch Name</td>
+        		<td><%= @branch.branch_name %></td>
+        	</tr>
+        	<tr>
+        		<td>City</td>
+        		<td><%= @branch.city %></td>
+        	</tr>
+        	<tr>
+        		<td>Address</td>
+        		<td><%= @branch.address %></td>
+        	</tr>
+        	<tr>
+        		<td>Status</td>
+        		<td><%= @branch.status %></td>
+        	</tr>
+        </table>
+
+        <%= link_to "Back" , admin_branches_path, class: "btn btn-primary" %>
+    	</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'admin', media: 'all' %>
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <%= render 'layouts/admin/sidebar' %>
+      <div class="main-panel">
+        <%= render 'layouts/admin/header' %>
+        <div class="content">
+          <%= yield %>
+        </div>
+        <%= render 'layouts/admin/footer' %>
+      </div>
+    </div>
+    <%= javascript_include_tag 'admin' %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        demo.initChartist();
+        $.notify({
+          icon: 'fa fa-sign-in',
+          message: "<%= notice.present? ? notice : 'Welcome to Dashboard' %>"
+          },{
+            type: '<%= "success"%>',
+            timer: 4000
+        });
+      });
+  </script>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+module Admin::BranchOwnerHelper
+end

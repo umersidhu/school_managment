@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+              <span><h2>Branches</h2></span>
+              <span><%= link_to "New", new_admin_branch_path, class: "btn btn-primary pull-right"%></span>
+            </div>
+            <div class="content table-responsive table-full-width">
+              <table class="table table-striped">
+                <thead>
+                  <th>ID</th>
+                  <th>School Name</th>
+                  <th>Cover image</th>
+                  <th>Branch Name</th>
+                  <th>City</th>
+                  <th>Address</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </thead>
+                <tbody>
+                  <% @branches.each do |branch|%>
+                    <tr style="background-color: <%= '#d08f8f' if branch.status.eql? 'inactive'%>">
+                      <td><%= branch.id %></td>
+                      <td><%= branch.school.name %></td>
+                      <td><%= image_tag(branch.cover.url, class: "branch-img") %></td>
+                      <td><%= branch.branch_name %></td>
+                      <td><%= branch.city %></td>
+                      <td><%= branch.address %></td>
+                      <td><%= branch.status %></td>
+                      <td>
+                        <%= link_to assign_admin_admin_branch_path(branch), class: "btn btn-warning btn-xs" do %>
+                        <i class="fa fa-user"></i>
+                        <% end %>
+
+                        <%= link_to admin_branch_path(branch), class: "btn btn-primary btn-xs" do %>
+                        <i class="fa fa-eye"></i>
+                        <% end %>
+                        <%= link_to edit_admin_branch_path(branch), class: "btn btn-xs btn-success" do %>
+                          <i class="fa fa-pencil"></i>  
+                        <% end%>
+                        <%= link_to admin_branch_path(branch), class: "btn btn-xs btn-danger", method: :delete do %>
+                          <i class="fa fa-times"></i>  
+                        <% end%>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

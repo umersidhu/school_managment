@@ -1,0 +1,36 @@
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+    Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+    Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+  -->
+
+  <div class="sidebar-wrapper">
+    <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text">
+            Creative Tim
+        </a>
+    </div>
+
+    <ul class="nav">
+      <li class="<%= 'active' if current_page?(root_path)%>">
+        <%= link_to root_path do %>
+          <i class="fa fa-home"></i>
+          <p>Dashboard</p>
+        <% end %>
+      </li>
+      <li class="<%= 'active' if current_page?(admin_schools_path)%>">
+        <%= link_to admin_schools_path do %>
+          <i class="fa fa-building"></i>
+          <p>Schools</p>
+        <% end %>
+      </li>
+      <li class="<%= 'active' if current_page?(admin_branches_path)%>">
+        <%= link_to admin_branches_path do %>
+          <i class="fa fa-bold"></i>
+          <p>School Branches</p>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
