@@ -6,7 +6,7 @@
 #
 development:
   adapter: mysql2
-  database: practice
+  database: school_managment
   pool: 5
   timeout: 5000
   username: root

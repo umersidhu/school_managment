@@ -29,12 +29,11 @@
                       <td><%= branch.address %></td>
                       <td><%= branch.status %></td>
                       <td>
-                        <%= link_to assign_admin_admin_branch_path(branch), class: "btn btn-warning btn-xs" do %>
-                        <i class="fa fa-user"></i>
+                        <%= link_to new_admin_branch_user_path(branch), class: "btn btn-warning btn-xs" do %>
+                          <i class="fa fa-user"></i>
                         <% end %>
-
                         <%= link_to admin_branch_path(branch), class: "btn btn-primary btn-xs" do %>
-                        <i class="fa fa-eye"></i>
+                          <i class="fa fa-eye"></i>
                         <% end %>
                         <%= link_to edit_admin_branch_path(branch), class: "btn btn-xs btn-success" do %>
                           <i class="fa fa-pencil"></i>  

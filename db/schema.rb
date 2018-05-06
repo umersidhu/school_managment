@@ -50,12 +50,12 @@ ActiveRecord::Schema.define(version: 20180503105627) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role"
-    t.integer "status"
+    t.integer "status", default: 0
     t.string "mobile_number"
-    t.integer "school_id"
+    t.integer "branch_id"
+    t.index ["branch_id"], name: "index_users_on_branch_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["school_id"], name: "index_users_on_school_id"
   end
 
 end
