@@ -1,0 +1,72 @@
+<%= form_for [:admin, @teacher], as: :user, url: @teacher.id.present?  ? admin_teacher_path(@teacher) : admin_teachers_path(@teacher), html:{class:"form-horizontal", "data-parsley-validate" => true } do |ff| %>
+    <div class="form-group">
+      <%= ff.label "", class:"control-label col-sm-2" do %>
+        First Name:<span class="text-danger">*</span>
+      <% end %>
+      <div class="col-sm-10">
+        <%= ff.text_field :first_name, class: "form-control", placeholder: "Enter branch address", required: true, "aria-required" => true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label "", class:"control-label col-sm-2" do %>
+        Last Name:<span class="text-danger">*</span>
+      <% end %>
+      <div class="col-sm-10">
+        <%= ff.text_field :last_name, class: "form-control", placeholder: "Enter branch address", required: true, "aria-required" => true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label "", class:"control-label col-sm-2" do %>
+        Email:<span class="text-danger">*</span>
+      <% end %>
+      <div class="col-sm-10">
+        <%= ff.email_field :email, class: "form-control", placeholder: "Enter branch address", required: true, "aria-required" => true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label "", class:"control-label col-sm-2" do %>
+        Mobile Number:<span class="text-danger">*</span>
+      <% end %>
+      <div class="col-sm-10">
+        <%= ff.text_field :mobile_number, class: "form-control", placeholder: "Enter branch address", required: true, "aria-required" => true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label "", class:"control-label col-sm-2" do %>
+        Role:<span class="text-danger">*</span>
+      <% end %>
+      <div class="col-sm-10">
+        <%= ff.select :role, User.roles.map{|key, value| [key.titleize, key ] if key.eql? "teacher" }.reject(&:blank?), {}, class: "form-control", "aria-required" => true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label "", class:"control-label col-sm-2" do %>
+        Status:<span class="text-danger">*</span>
+      <% end %>
+      <div class="col-sm-10">
+        <%= ff.select :status, User.statuses.map{|key, value| [key.titleize, key ]}, {prompt: "<----- select Status ----->"}, class: "form-control", "aria-required" => true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label "", class:"control-label col-sm-2" do %>
+        Password:<span class="text-danger">*</span>
+      <% end %>
+      <div class="col-sm-10">
+        <%= ff.password_field :password, class: "form-control", placeholder: "Enter branch address", required: true, "aria-required" => true, autocomplete: "off" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= ff.label "", class:"control-label col-sm-2" do %>
+        Password confirmation:<span class="text-danger">*</span>
+      <% end %>
+      <div class="col-sm-10">
+        <%= ff.password_field :password_confirmation, class: "form-control", placeholder: "Enter branch address", required: true, "aria-required" => true, autocomplete: "off" %>
+      </div>
+    </div>
+    <div class="form-group"> 
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= ff.submit "Submit", class: "btn btn-success" %>
+        <%= link_to "Back", admin_teachers_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>

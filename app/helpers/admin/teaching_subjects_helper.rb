@@ -1,0 +1,2 @@
+module Admin::TeachingSubjectsHelper
+end

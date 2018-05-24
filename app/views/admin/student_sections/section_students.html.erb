@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+              <h2>Students of <%= @class_section.branch_class.name %> (<%= @class_section.section %>)
+                 <span>
+                  <%= link_to "Assign Students", new_admin_branch_class_section_student_section_path(@branch_class, @class_section), class: "btn btn-primary pull-right", remote: true%>
+                </span>
+              </h2>
+            </div>
+            <div class="content table-responsive table-full-width" id= "section-students">
+              <%= render partial: "students", locals: {class_section: @class_section}%>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div id="student-modal">
+</div>
+

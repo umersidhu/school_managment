@@ -1,0 +1,5 @@
+$('#student-modal').html("<%= escape_javascript(render partial: 'assign_student_modal', locals: {students: @students, student_section: @student_section, branch_class: @branch_class, class_section: @class_section} ) %>");
+$('#myModal').modal('show');
+$('select').select2({
+    dropdownParent: $('#myModal')
+});

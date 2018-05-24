@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+              <span><h2>Students</h2></span>
+              <span><%= link_to "New", new_admin_student_path, class: "btn btn-primary pull-right"%></span>
+            </div>
+            <div class="content table-responsive table-full-width">
+              <table class="table table-striped">
+                <thead>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile Number</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </thead>
+                <tbody>
+                  <% @students.each do |student|%>
+                    <tr style="background-color: <%= '#d08f8f' if student.inactive? %>">
+                      <td><%= student.full_name %></td>
+                      <td><%= student.email %></td>
+                      <td><%= student.mobile_number %></td>
+                      <td><%= student.role %></td>
+                      <td><%= student.status %></td>
+                      <td>
+                        <%= link_to edit_admin_student_path(student), class: "btn btn-xs btn-success" do %>
+                          <i class="fa fa-pencil"></i>  
+                        <% end%>
+                        <%= link_to admin_student_path(student), class: "btn btn-xs btn-danger", method: :delete do %>
+                          <i class="fa fa-times"></i>  
+                        <% end%>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

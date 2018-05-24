@@ -7,30 +7,64 @@
 
   <div class="sidebar-wrapper">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text">
-            Creative Tim
+        <a href="#" class="simple-text">
+            <%= current_user.branch.school.name  if  current_user&.branch&.school.present?%> ( <%= current_user.branch.branch_name  if  current_user&.branch&.present? %>)
         </a>
     </div>
-
-    <ul class="nav">
-      <li class="<%= 'active' if current_page?(root_path)%>">
-        <%= link_to root_path do %>
-          <i class="fa fa-home"></i>
-          <p>Dashboard</p>
-        <% end %>
-      </li>
-      <li class="<%= 'active' if current_page?(admin_schools_path)%>">
-        <%= link_to admin_schools_path do %>
-          <i class="fa fa-building"></i>
-          <p>Schools</p>
-        <% end %>
-      </li>
-      <li class="<%= 'active' if current_page?(admin_branches_path)%>">
-        <%= link_to admin_branches_path do %>
-          <i class="fa fa-bold"></i>
-          <p>School Branches</p>
-        <% end %>
-      </li>
-    </ul>
+    <% if current_user.admin? %>
+      <ul class="nav">
+        <li class="<%= 'active' if current_page?(admin_root_path)%>">
+          <%= link_to admin_root_path do %>
+            <i class="fa fa-home"></i>
+            <p>Dashboard</p>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if current_page?(admin_schools_path)%>">
+          <%= link_to admin_schools_path do %>
+            <i class="fa fa-building"></i>
+            <p>Schools</p>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if current_page?(admin_branches_path)%>">
+          <%= link_to admin_branches_path do %>
+            <i class="fa fa-bold"></i>
+            <p>School Branches</p>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if current_page?(admin_users_path)%>">
+          <%= link_to admin_users_path do %>
+            <i class="fa fa-male"></i>
+            <p>Admins</p>
+          <% end %>
+        </li>
+      </ul>
+    <% elsif current_user.school_admin? %>
+      <ul class="nav">
+        <li class="<%= 'active' if current_page?(admin_root_path)%>">
+          <%= link_to admin_root_path do %>
+            <i class="fa fa-home"></i>
+            <p>Dashboard</p>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if current_page?(admin_branch_classes_path)%>">
+          <%= link_to admin_branch_classes_path do %>
+            <i class="fa fa-building"></i>
+            <p>Classes</p>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if current_page?(admin_students_path)%>">
+          <%= link_to admin_students_path do %>
+            <i class="fa fa-users"></i>
+            <p>Students</p>
+          <% end %>
+        </li>
+        <li class="<%= 'active' if current_page?(admin_teachers_path)%>">
+          <%= link_to admin_teachers_path do %>
+            <i class="fa fa-graduation-cap"></i>
+            <p>Teachers</p>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
   </div>
 </div>

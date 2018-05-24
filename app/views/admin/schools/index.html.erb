@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                   <% @schools.each do |school|%>
-                    <tr style="background-color: <%= '#d08f8f' if school.status.eql? 'inactive'%>">
+                    <tr style="background-color: <%= '#d08f8f' if school.inactive?%>">
                       <td><%= school.id %></td>
                       <td><%= school.name %></td>
                       <td><%= school.status %></td>

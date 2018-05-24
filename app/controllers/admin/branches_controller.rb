@@ -1,4 +1,5 @@
 class Admin::BranchesController < Admin::BaseController
+  before_action :check_super_admin
 	before_action :find_branch, only: [:edit, :update, :destroy, :show]
   before_action :active_schools, only: [:new, :edit]
 	
@@ -7,7 +8,7 @@ class Admin::BranchesController < Admin::BaseController
   end
 
   def show
-
+    @owner = @branch.user if @branch.user.present?
   end
 
   def new

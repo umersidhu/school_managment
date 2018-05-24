@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 form-card">
+      <div class="card">
+        <div class="heading">
+          <h3 class="text-center"><%= @branch_class.name %> Sections</h3>
+        </div>
+    	</div>
+		</div>
+	</div>
+  <div class="row">
+    <% @branch_class.sections&.each do |class_section|%>
+      <div class="col-md-4 form-card subject">
+        <div class="card">
+          <div class="heading">
+            <h3 class="text-center"><%= class_section.section %></h3>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

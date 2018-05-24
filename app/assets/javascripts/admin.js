@@ -4,6 +4,7 @@
 //= require admin/bootstrap.min
 //= require admin/chartist.min
 //= require admin/demo
-//= require admin/jquery-1.10.2
 //= require admin/bootstrap-notify
 //= require parsley
+//= require select2
+//= require custom

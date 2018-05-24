@@ -15,6 +15,9 @@ gem 'jquery-rails'
 gem "paperclip", "~> 6.0.0"
 gem "font-awesome-rails"
 gem "parsley-rails"
+gem 'friendly_id', '~> 5.1.0'
+gem "select2-rails"
+gem 'activerecord-import'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

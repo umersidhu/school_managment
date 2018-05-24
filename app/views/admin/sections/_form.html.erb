@@ -1,0 +1,25 @@
+<%= form_for [:admin, @branch_class, @section], html:{class:"form-horizontal", "data-parsley-validate" => true } do |f| %>
+  <% if @section.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @section.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label "", class:"control-label col-sm-2" do %>
+      Section Name:<span class="text-danger">*</span>
+    <% end %>
+    <div class="col-sm-10">
+      <%= f.select :section, Section.sections.map{|key, value| [key.titleize, key ]},{prompt: "<---Select Section--->"}, class: "form-control",required: true, "aria-required" => true %>
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Submit", class: "btn btn-success" %>
+      <%= link_to "Back", admin_branch_classes_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for [:admin, @branch_class, @class_section, @student_section], html:{class:"form-horizontal", "data-parsley-validate" => true, id: "assign-student-form" }, remote: true do |f| %>
+          <div class="form-group">
+            <%= f.label "", class:"control-label col-sm-2" do %>
+              Student:<span class="text-danger">*</span>
+            <% end %>
+            <div class="col-sm-10">
+             <%= f.select(:user_id, @students.map {|student| [student.first_name.humanize,student.id]}, { prompt: "Choose Students" }, class: 'form-control select2', multiple: true, required: true) %>
+            </div>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit "Submit", class: "btn btn-success" %>
+        </div>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

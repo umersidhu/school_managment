@@ -1,4 +1,5 @@
 class Admin::SchoolsController < Admin::BaseController
+  before_action :check_super_admin
 	before_action :find_school, only: [:edit, :update, :destroy]
   def index
     @schools = School.all

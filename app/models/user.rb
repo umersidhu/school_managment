@@ -1,7 +1,13 @@
 class User < ApplicationRecord
-  enum role: [:user, :admin, :school_admin, :teacher]
+  enum role:   [:student, :admin, :school_admin, :teacher]
+  enum status: [:inactive, :active]
 
   belongs_to :branch, optional: true
+  has_many   :student_sections
+  has_many   :sections, through: :student_sections
+
+  has_many   :teaching_subjects
+  has_many   :subjects, through: :teaching_subjects
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -9,6 +15,11 @@ class User < ApplicationRecord
 
   scope :school_admins, -> { where(role: User.roles[:school_admin])}
   scope :admins, -> { where(role: User.roles[:admin])}
-  scope :students, -> { where(role: User.roles[:user])}
+  scope :students, -> { where(role: User.roles[:student])}
+  scope :teachers, -> { where(role: User.roles[:teacher])}
+
+  def full_name
+    "#{self.first_name} (#{self.last_name})"
+  end
 end
  

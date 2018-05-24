@@ -1,6 +1,8 @@
 class Branch < ApplicationRecord
   belongs_to :school
   has_many :users
+  has_many :branch_classes
+
 
   validates :school_id, :branch_name, :cover, :city, :address, :status, presence: true
   validates_uniqueness_of :branch_name

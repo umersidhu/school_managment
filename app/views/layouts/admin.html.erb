@@ -3,7 +3,8 @@
   <head>
     <title>Practice</title>
     <%= csrf_meta_tags %>
-
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
     <%= stylesheet_link_tag 'admin', media: 'all' %>
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -25,13 +26,15 @@
     <script type="text/javascript">
       $(document).ready(function(){
         demo.initChartist();
-        $.notify({
-          icon: 'fa fa-sign-in',
-          message: "<%= notice.present? ? notice : 'Welcome to Dashboard' %>"
-          },{
-            type: '<%= "success"%>',
-            timer: 4000
-        });
+        <% if alert.present? || notice.present?%>
+          $.notify({
+            icon: 'fa fa-bell',
+            message: "<%= notice.present? ? notice : alert%>"
+            },{
+              type: '<%= notice.present? ? "success" : "alert"%>',
+              timer: 4000
+          });
+        <% end %>
       });
   </script>
   </body>

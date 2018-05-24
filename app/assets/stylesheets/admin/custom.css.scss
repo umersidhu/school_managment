@@ -1,21 +1,76 @@
 .form-card {
   .card {
     padding: 10px;
-    label{
+
+    label {
       margin-top: 20px;
       color: black;
     }
 
-    input{
+    input {
       border-bottom: 1px solid;
     }
 
-    select{
+    select {
       border-bottom: 1px solid;
     }
-      
   }
 }
-.branch-img{
+
+.assigning-sections {
+  text-align: center;
+  margin-top: 66px;
+}
+
+.branch-img {
   width: 40px;
 }
+
+.header {
+  overflow: hidden;
+  padding: 15px !important;
+  background: #eee;
+  margin: 0 0 20px;
+
+  h2 {
+    margin: 0;
+  }
+
+  i {
+    margin: 0 20px 0 0;
+  }
+}
+
+.card-box {
+  &:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.custom-card {
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  display: block;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
+  text-decoration: none;
+  color: #000;
+  transition: all .25s;
+}
+
+.custom-card:hover {
+  box-shadow: 0 2px 18px 0 rgba(0,0,0,0.35);
+  text-decoration: none;
+}
+
+.modal-backdrop {
+  position:static;
+}
+
