@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead>
+    <th>Class</th>
+    <th>Section</th>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>Role</th>
+  </thead>
+  <tbody>
+    <% @teachers.each do |teacher|%>
+      <tr>
+        <% debugger %>
+        <td><%= teacher.branch.branch_class %></td>
+        <td><%= @class_section.section %></td>
+        <td><%= teacher.full_name %></td>
+        <td><%= teacher.email %></td>
+        <td><%= teacher.role %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

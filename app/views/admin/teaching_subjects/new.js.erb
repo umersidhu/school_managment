@@ -1,0 +1,5 @@
+$('#teacher-modal').html("<%= escape_javascript(render partial: 'assign_teachers_modal', locals: {teachers: @teachers, student_section: @student_section, branch_class: @branch_class, class_section: @class_section, subjects: @subjects} ) %>");
+$('#assign_teacher').modal('show');
+$('select').select2({
+    dropdownParent: $('#assign_teacher')
+});
