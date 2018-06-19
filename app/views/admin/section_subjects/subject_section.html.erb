@@ -1,0 +1,27 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Subjects of <%= @section.branch_class.name %> (<%= @section.section %>)</a> </div>
+  <div class="custom-header">
+    <h1>Subjects 
+      <span class="pull-right">
+        <%= link_to "Assign Subjects", new_admin_branch_class_section_student_section_path(@branch_class, @section), class: "btn btn-primary pull-right", remote: true%>
+      </span>
+    </h1>
+  </div>
+</div>
+<div class="container-fluid">
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
+          <h5>All Subjects</h5>
+        </div>
+        <div class="widget-content nopadding" id= "section-subjects">
+          <%= render partial: "subjects", locals: {class_section: @section, subjects: subjects}%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="student-modal">
+</div>

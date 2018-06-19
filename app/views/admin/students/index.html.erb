@@ -1,43 +1,57 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Students</a> </div>
+  <div class="custom-header">
+    <h1>Students 
+      <span class="pull-right">
+        <%= link_to new_admin_student_path, class: "btn btn-primary" do %>
+          <i class="fa fa-graduation-cap"></i> New
+        <% end %>
+      </span>
+    </h1>
+  </div>
+</div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="header">
-              <span><h2>Students</h2></span>
-              <span><%= link_to "New", new_admin_student_path, class: "btn btn-primary pull-right"%></span>
-            </div>
-            <div class="content table-responsive table-full-width">
-              <table class="table table-striped">
-                <thead>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Mobile Number</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </thead>
-                <tbody>
-                  <% @students.each do |student|%>
-                    <tr style="background-color: <%= '#d08f8f' if student.inactive? %>">
-                      <td><%= student.full_name %></td>
-                      <td><%= student.email %></td>
-                      <td><%= student.mobile_number %></td>
-                      <td><%= student.role %></td>
-                      <td><%= student.status %></td>
-                      <td>
-                        <%= link_to edit_admin_student_path(student), class: "btn btn-xs btn-success" do %>
-                          <i class="fa fa-pencil"></i>  
-                        <% end%>
-                        <%= link_to admin_student_path(student), class: "btn btn-xs btn-danger", method: :delete do %>
-                          <i class="fa fa-times"></i>  
-                        <% end%>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
+          <h5>All Students</h5>
         </div>
+        <div class="widget-content nopadding">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @students.each do |student|%>
+                <tr class="odd gradeA" style="background-color: <%= '#d08f8f' if student.inactive? %>">
+                  <td><%= student.full_name %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.mobile_number %></td>
+                  <td><%= student.role %></td>
+                  <td><%= student.status %></td>
+                  <td>
+                    <%= link_to edit_admin_student_path(student), class: "btn btn-xs btn-success" do %>
+                      <i class="fa fa-pencil"></i>  
+                    <% end%>
+                    <%= link_to admin_student_path(student), class: "btn btn-xs btn-danger", method: :delete do %>
+                      <i class="fa fa-times"></i>  
+                    <% end%>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

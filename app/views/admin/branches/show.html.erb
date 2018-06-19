@@ -1,18 +1,18 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6 form-card">
-      <div class="card">
-        <div class="heading">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
           <h3 class="text-center"><%= @branch.branch_name %></h3>
         </div>
-        <table class="table table-stripped">
+        <table class="table table-stripped table-bordered">
         	<tr>
         		<td>School Name:</td>
         		<td><%= @branch.school.name%></td>
         	</tr>
         	<tr>
         		<td>Cover Image</td>
-        		<td><%= image_tag(@branch.cover.url, class: "branch-img") %></td>
+        		<td><%= image_tag(@branch.cover.url(:thumb), class: "branch-img") %></td>
         	</tr>
         	<tr>
         		<td>Branch Name</td>
@@ -35,13 +35,15 @@
         <%= link_to "Back" , admin_branches_path, class: "btn btn-primary" %>
     	</div>
 		</div>
-    <div class="col-md-6 form-card">
-      <div class="card">
-        <div class="heading">
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
           <h3 class="text-center">Owner</h3>
         </div>
         <% if @owner.present? %>
-          <table class="table table-stripped">
+          <table class="table table-stripped table-bordered">
             <tr>
               <td>Owner Name</td>
               <td><%= @owner.full_name %></td>
@@ -63,14 +65,13 @@
               <td><%= @owner.status %></td>
             </tr>
           </table>
-
-          <%= link_to edit_admin_branch_user_path(@branch,  @owner), class: "btn btn-warning " do %>
-            <i class="fa fa-user"><i class="fa fa-pencil"></i></i>
+            <%= link_to edit_admin_branch_user_path(@branch,  @owner), class: "btn btn-warning " do %>
+            <i class="fa fa-pencil"></i></i>
           <% end %>
         <% else %>
           <h5>No owner assigned yet!</h5>
         <% end %>
       </div>
     </div>
-	</div>
+  </div>
 </div>

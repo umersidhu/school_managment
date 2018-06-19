@@ -1,0 +1,5 @@
+$('#section_subjects').html("<%= escape_javascript(render partial: 'assign_subject_modal', locals: {branch_class: @branch_class, section: @section} ) %>");
+$('#section_subjects').modal('show');
+$('select').select2({
+    dropdownParent: $('#section_subject_modal')
+});

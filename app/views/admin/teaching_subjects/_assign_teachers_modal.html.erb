@@ -6,30 +6,29 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        <%= form_for [:admin, @branch_class, @class_section, @teacher_section], html:{class:"form-horizontal", "data-parsley-validate" => true, id: "assign-student-form" }, remote: true do |f| %>
+        <div class="widget-content nopadding">
+          <%= form_for [:admin, @branch_class, @class_section, @teacher_section], html:{class:"form-horizontal", "data-parsley-validate" => true, id: "assign-student-form" }, remote: true do |f| %>
           <div class="form-group">
-            <%= f.label "", class:"control-label col-sm-2" do %>
-              Teachers:<span class="text-danger">*</span>
-            <% end %>
-            <div class="col-sm-10">
-             <%= f.select(:user_id, @teachers.map {|teacher| [teacher.first_name.humanize,teacher.id]}, { prompt: "Choose Teacher" }, class: 'form-control', required: true) %>
+            <div class="control-group">
+              <label class="control-label">Select Teacher</label>
+              <div class="controls">
+                <%= f.select(:user_id, @teachers.map {|teacher| [teacher.first_name.humanize,teacher.id]}, { prompt: "Choose Teacher" }, class: 'form-control', required: true) %>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <%= f.label "", class:"control-label col-sm-2" do %>
-              Subjects:<span class="text-danger">*</span>
-            <% end %>
-            <div class="col-sm-10">
-             <%= f.select(:subject_id, @subjects.map {|subject| [subject.title.humanize,subject.id]}, { prompt: "Choose Subject" }, class: 'form-control', required: true) %>
+            <div class="control-group">
+              <label class="control-label">Select Subject</label>
+              <div class="controls">
+                <%= f.select(:subject_id, @subjects.map {|subject| [subject.title.humanize,subject.id]}, { prompt: "Choose Subject" }, class: 'form-control', required: true) %>
+              </div>
             </div>
-          </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= f.submit "Submit", class: "btn btn-success" %>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <%= f.submit "Submit", class: "btn btn-success" %>
+            </div>
+          <% end %>
         </div>
-        <% end %>
-      </div>
       </div>
     </div>
   </div>
 </div>
+

@@ -1,0 +1,22 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Subjects</a> </div>
+  <div class="custom-header">
+    <h1>Subjects 
+      <span class="pull-right">
+        <%= link_to new_admin_branch_class_section_section_subject_path(@branch_class, @section), class: "btn btn-primary", remote: true do %>
+          <i class="fa fa-plus"></i> New
+        <% end %>
+      </span>
+    </h1>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="quick-actions_homepage">
+    <div class="quick-actions">
+      <div id= "section_subjects_all">
+        <%= render partial: "subjects", locals: {section_subjects: @section_subjects } %>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="section_subjects"></div>

@@ -8,7 +8,7 @@ class Admin::BranchesController < Admin::BaseController
   end
 
   def show
-    @owner = @branch.user if @branch.user.present?
+    @owner = @branch.users.school_admin if @branch.users.school_admin.present?
   end
 
   def new

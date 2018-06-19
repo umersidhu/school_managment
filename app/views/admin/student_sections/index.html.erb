@@ -1,44 +1,48 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 form-card">
-      <div class="card">
-        <div class="heading">
-          <h3 class="text-center"><%= @branch_class.name %> (<%= @class_section.section %>)</h3>
-        </div>
-      </div>
-    </div>
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current"><%= @branch_class.name %> (<%= @class_section.section %>)</a> </div>
+  <div class="custom-header">
+    <h1><%= @branch_class.name %> (<%= @class_section.section %>) </h1>
   </div>
-  <div class="row">
-    <div class="col-md-4 form-card subject">
-        <div class="card">
-          <div class="heading">
-            <%= link_to section_students_admin_branch_class_section_student_sections_path(@branch_class, @class_section) do %>
+</div>
+<div class="container-fluid">
+  <div class="quick-actions_homepage">
+    <div class="quick-actions">
+        <div class="bg_lo span3 classe-block">
+          <h1><%= link_to section_students_admin_branch_class_section_student_sections_path(@branch_class, @class_section) do %>
               <h3 class="text-center">
                 Students
               </h3>
-            <% end %>
+            <% end %></h1>
+          <div class="class-actions">
           </div>
         </div>
-      </div>
-      <div class="col-md-4 form-card subject">
-        <div class="card">
-          <div class="heading">
-            <%= link_to admin_branch_class_section_teaching_subjects_path(@branch_class, @class_section) do %>
+        <div class="bg_lo span3 classe-block">
+          <h1><%= link_to admin_branch_class_section_teaching_subjects_path(@branch_class, @class_section) do %>
               <h3 class="text-center">
                 Teachers
               </h3>
-            <% end %>
+            <% end %></h1>
+          <div class="class-actions">
           </div>
         </div>
-      </div>
-      <div class="col-md-4 form-card subject">
-        <div class="card">
-          <div class="heading">
-            <h3 class="text-center">
-              Subjects
-            </h3>
+        <div class="bg_lo span3 classe-block">
+          <h1><%= link_to section_students_admin_branch_class_section_student_sections_path(@branch_class, @class_section) do %>
+              <h3 class="text-center">
+                Students Fee
+              </h3>
+            <% end %></h1>
+          <div class="class-actions">
           </div>
         </div>
-      </div>
+        <div class="bg_lo span3 classe-block">
+          <h1><%= link_to admin_branch_class_section_section_subjects_path(@branch_class, @class_section) do %>
+              <h3 class="text-center">
+                <%= @branch_class.name %> (<%= @class_section.section %>) Subjects
+              </h3>
+            <% end %></h1>
+          <div class="class-actions">
+          </div>
+        </div>
+    </div>
   </div>
 </div>

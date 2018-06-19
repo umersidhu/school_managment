@@ -1,76 +1,73 @@
-.form-card {
-  .card {
-    padding: 10px;
+.custom-header {
+  margin: 24px 21px -19px 17px;
+  background-color: #c7c7c7;
+  h1 {
+    padding: 7px;
+  }
+}/* 
+.card {
+ padding: 16px;
+ margin-bottom: 32px;
+ border-radius: 4px;
+ display: block;
+ background-color: white;
+ box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
+ text-decoration: none;
+ color: grey;
+ transition: all .25s;
+}
 
-    label {
-      margin-top: 20px;
-      color: black;
-    }
+.card:hover {
+ box-shadow: 0 2px 18px 0 rgba(0,0,0,0.35);
+ margin-top: -5px;
+ text-decoration: none;
+} */
 
-    input {
-      border-bottom: 1px solid;
-    }
+.classe-block {
+  color: grey;
+  background-color: white;
+  margin-top: 20px;
 
-    select {
-      border-bottom: 1px solid;
-    }
+  .class-actions {
+    background-color: gainsboro;
+    padding: 8px;
   }
 }
 
-.assigning-sections {
-  text-align: center;
-  margin-top: 66px;
-}
-
-.branch-img {
-  width: 40px;
-}
-
-.header {
-  overflow: hidden;
-  padding: 15px !important;
-  background: #eee;
-  margin: 0 0 20px;
-
-  h2 {
-    margin: 0;
-  }
-
-  i {
-    margin: 0 20px 0 0;
-  }
-}
-
-.card-box {
-  &:after {
-    content: '';
-    clear: both;
-    display: block;
-  }
-
-  h3 {
-    margin: 0;
-  }
-}
-
-.custom-card {
-  padding: 16px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  display: block;
-  background-color: #fff;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
-  text-decoration: none;
-  color: #000;
-  transition: all .25s;
-}
-
-.custom-card:hover {
+.classe-block:hover {
   box-shadow: 0 2px 18px 0 rgba(0,0,0,0.35);
-  text-decoration: none;
+  background-color: gray;
+  color: white;
+}
+.select2-drop {
+  z-index: 99999;
 }
 
-.modal-backdrop {
-  position:static;
+.ui-progressbar {
+    position: relative;
 }
-
+#progressbar {
+    background: #F5FFFA;
+}
+.ui-progressbar .ui-progressbar-value {
+  margin: 0;
+}
+.progress-label {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: #cccccc;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+}
+.ui-widget-header {
+    background: #ec2528;
+}
+p {
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 26px;
+}
+.well {
+  margin-top: 20px;
+}

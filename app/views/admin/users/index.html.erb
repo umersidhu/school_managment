@@ -1,38 +1,48 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Branch Admin</a> </div>
+  <div class="custom-header">
+    <h1>Branch Admin</h1>
+  </div>
+</div>
+
+
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="header">
-              <span><h2>Branch Admin</h2></span><!-- 
-              <span><%= link_to "New", new_admin_school_path, class: "btn btn-primary pull-right"%></span> -->
-            </div>
-            <div class="content table-responsive table-full-width">
-              <table class="table table-striped">
-                <thead>
-                  <th>School</th>
-                  <th>Branch</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Mobile Number</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                </thead>
-                <tbody>
-                  <% @users.each do |user|%>
-                    <tr style="background-color: <%= '#d08f8f' if user.inactive? %>">
-                      <td><%= user.branch.school.name %></td>
-                      <td><%= user.branch.branch_name %></td>
-                      <td><%= user.full_name %></td>
-                      <td><%= user.email %></td>
-                      <td><%= user.mobile_number %></td>
-                      <td><%= user.role %></td>
-                      <td><%= user.status %></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-        </div>
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
+            <span><h2>Branch Admin</h2></span><!-- 
+            <span><%= link_to "New", new_admin_school_path, class: "btn btn-primary pull-right"%></span> -->
+          </div>
+          <hr>
+          <div class="widget-content nopadding">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <th>School</th>
+                <th>Branch</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Role</th>
+                <th>Status</th>
+              </thead>
+              <tbody>
+                <% @users.each do |user|%>
+                  <tr style="background-color: <%= '#d08f8f' if user.inactive? %>">
+                    <td><%= user.branch.school.name %></td>
+                    <td><%= user.branch.branch_name %></td>
+                    <td><%= user.full_name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.mobile_number %></td>
+                    <td><%= user.role %></td>
+                    <td><%= user.status %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+      </div>
     </div>
   </div>
 </div>

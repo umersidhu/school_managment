@@ -1,0 +1,53 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Tests</a> </div>
+  <div class="custom-header">
+    <h1>Marks
+      <span class="pull-right">
+        
+      </span>
+    </h1>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
+          <h5>All Tests</h5>
+        </div>
+        <%= link_to "Edit", edit_admin_branch_class_section_section_subject_section_subject_test_user_test_path(@branch_class, @section, @section_subject, @section_subject_test, class: "bt") %>
+        <div class="widget-content nopadding">
+          <table class= "table table-bordered table-stripped">
+            <thead>
+              <th>Student Name</th>
+              <th>Test Name</th>
+              <th>Total Marks</th>
+              <th>Obtained Marks</th>
+              <th>Progress</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <% @user_tests.each do |user_test| %>
+                <tr>
+                  <td><%= user_test.user.full_name %></td>
+                  <td><%= user_test.section_subject_test.name %></td>
+                  <td id= "editable-marks"><%= user_test.section_subject_test.total_marks %></td>
+                  <td><%= user_test.obtained_marks %></td>
+                  <td>
+                    <span class="icon24 icomoon-icon-arrow-up-2 green"></span> <%= marks_percent(user_test.section_subject_test.total_marks, user_test.obtained_marks)%>% z<span class="pull-right strong">100%</span>
+                    <div class="progress progress-striped ">
+                      <div style="width: <%= marks_percent(user_test.section_subject_test.total_marks, user_test.obtained_marks)%>%;" class="bar"></div>
+                    </div>
+                  </td>
+                  <td><%= link_to "Edit", edit_admin_branch_class_section_section_subject_section_subject_test_user_test_path(@branch_class, @section, @section_subject, @section_subject_test, user_test), class: "btn btn-warning" %></td>
+                </tr>
+              <% end %>
+            </tbody>   
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

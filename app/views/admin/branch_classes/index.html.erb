@@ -1,35 +1,37 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Classes</a> </div>
+  <div class="custom-header">
+    <h1>Classes 
+      <span class="pull-right">
+        <%= link_to new_admin_branch_class_path, class: "btn btn-primary" do %>
+          <i class="fa fa-plus"></i> New
+        <% end %>
+      </span>
+    </h1>
+  </div>
+</div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card-box">
-        <div class="header">
-          <h2 class="pull-left"><i class="fa fa-building"></i><span>Classes</span></h2>
-          <%= link_to "New", new_admin_branch_class_path, class: "btn btn-primary pull-right"%>
+  <div class="quick-actions_homepage">
+    <div class="quick-actions">
+      <% @branch_classes.each do |branch_class|%>
+        <div class="bg_lo span3 classe-block">
+          <h1><%= branch_class.name %></h1>
+          <div class="class-actions">
+            <%= link_to admin_branch_class_subjects_path(branch_class), class: "btn btn-danger btn-xs" do %>
+              Subjects
+            <% end %>
+            <%= link_to admin_branch_class_sections_path(branch_class), class: "btn btn-primary btn-xs" do %>
+              Sections 
+            <% end %>
+            <%= link_to edit_admin_branch_class_path(branch_class), class: "btn btn-xs btn-success" do %>
+              Edit  
+            <% end%>
+            <%= link_to admin_branch_class_path(branch_class), class: "btn btn-xs btn-danger", method: :delete do %>
+              Delete 
+            <% end%>
+          </div>
         </div>
-        <div class="content table-responsive table-full-width">
-          <% @branch_classes.each do |branch_class|%>
-            <div class="col-sm-4 text-center">
-              <div class="custom-card">
-                <h3><%= branch_class.name %></h3>
-                <div class="show-pages">
-                  <%= link_to admin_branch_class_subjects_path(branch_class), class: "btn btn-danger btn-xs" do %>
-                    Subjects
-                  <% end %>
-                  <%= link_to admin_branch_class_sections_path(branch_class), class: "btn btn-primary btn-xs" do %>
-                    Sections 
-                  <% end %>
-                  <%= link_to edit_admin_branch_class_path(branch_class), class: "btn btn-xs btn-success" do %>
-                    Edit  
-                  <% end%>
-                  <%= link_to admin_branch_class_path(branch_class), class: "btn btn-xs btn-danger", method: :delete do %>
-                    Delete 
-                  <% end%>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

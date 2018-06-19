@@ -1,0 +1,30 @@
+<%= form_for [:admin, @branch_class, @section, @section_subject, @section_subject_test], html:{class: "form-horizontal" } do |f| %>
+  <% if @section_subject_test.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @section_subject_test.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <label class="control-label">Name: </label>
+    <div class="controls">
+    <%= f.text_field :name, class: "span11 form-control", placeholder: "Enter Test Name", "required" => "", "aria-required" => true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Total Marks: </label>
+    <div class="controls">
+      <%= f.text_field :total_marks, class: "span11 form-contro", placeholder: "Enter Total Marks", "required" => "", "aria-required" => true %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Submit", class: "btn btn-success" %>
+    <%= link_to "Back", admin_branch_class_section_section_subject_section_subject_tests_path(@branch_class, @section, @section_subject), class: "btn btn-primary pull-right" %>
+  </div>
+<% end %>

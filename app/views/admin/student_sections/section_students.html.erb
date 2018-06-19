@@ -1,21 +1,27 @@
+ <div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Students of <%= @class_section.branch_class.name %> (<%= @class_section.section %>)</a> </div>
+  <div class="custom-header">
+    <h1>Students 
+      <span class="pull-right">
+        <%= link_to "Assign Students", new_admin_branch_class_section_student_section_path(@branch_class, @class_section), class: "btn btn-primary pull-right", remote: true%>
+      </span>
+    </h1>
+  </div>
+</div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="header">
-              <h2>Students of <%= @class_section.branch_class.name %> (<%= @class_section.section %>)
-                 <span>
-                  <%= link_to "Assign Students", new_admin_branch_class_section_student_section_path(@branch_class, @class_section), class: "btn btn-primary pull-right", remote: true%>
-                </span>
-              </h2>
-            </div>
-            <div class="content table-responsive table-full-width" id= "section-students">
-              <%= render partial: "students", locals: {class_section: @class_section}%>
-            </div>
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
+          <h5>All Students</h5>
         </div>
+        <div class="widget-content nopadding" id= "section-students">
+          <%= render partial: "students", locals: {class_section: @class_section}%>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div id="student-modal">
 </div>
-

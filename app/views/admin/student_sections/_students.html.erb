@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
   <thead>
     <th>Class</th>
     <th>Section</th>
@@ -7,7 +7,7 @@
     <th>Role</th>
   </thead>
   <tbody>
-    <% @class_section&.users.each do |user|%>
+    <% @class_section&.students.uniq.each do |user|%>
       <tr>
         <td><%= @class_section.branch_class.name %></td>
         <td><%= @class_section.section %></td>

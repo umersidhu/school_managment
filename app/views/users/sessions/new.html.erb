@@ -1,24 +1,33 @@
-<div class=" signup">
-    <button class=" btn btn-info animated bounce signupbtn"  data-toggle="modal" data-target="#signinup">Sign In</button>
-</div>
-<!--First Modal-->
-<div class="modal fade " id="signinup">
-    <div class="modal-dialog modal-content">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="modal-header">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Please Enter the email", class: "form-control" %>
-          <%= f.password_field :password, autocomplete: "off", placeholder: "Please Enter the Password", class: "form-control" %>
-
+<div id="loginbox">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), id: "loginform", class: "form-vertical") do |f| %>
+    <div class="control-group normal_text"> <h3> STUDENT MANAGEMENT SYSTEM</h3></div>
+      <div class="control-group">
+        <div class="controls">
+          <div class="main_input_box">
+            <span class="add-on bg_lg"><i class="icon-user"> </i></span><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Please Enter the email", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <div class="main_input_box">
+            <span class="add-on bg_ly"><i class="icon-lock"></i></span><%= f.password_field :password, autocomplete: "off", placeholder: "Please Enter the Password", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <div class="pull-left">
           <% if devise_mapping.rememberable? -%>
             <div class="remember-field">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
+              <%= f.check_box :remember_me%>
+              <%= f.label :remember_me%>
             </div>
           <% end -%>
         </div>
-        <div class="modal-body start">
+        <div class="pull-right">
           <%= f.submit "Log in", class: "btn btn-info animated bounceInRight" %>
         </div>
-      <% end %>
-    </div>
+      </div>
+  <% end %>
 </div>
+

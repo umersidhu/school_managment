@@ -11,13 +11,14 @@ gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2', '~> 0.3.18'
 gem 'devise'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3.3'
 gem "paperclip", "~> 6.0.0"
 gem "font-awesome-rails"
 gem "parsley-rails"
 gem 'friendly_id', '~> 5.1.0'
 gem "select2-rails"
 gem 'activerecord-import'
+gem "gritter", "1.2.0"
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

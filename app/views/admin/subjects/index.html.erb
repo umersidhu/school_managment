@@ -1,29 +1,31 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Subjects</a> </div>
+  <div class="custom-header">
+    <h1>Subjects 
+      <span class="pull-right">
+        <%= link_to new_admin_branch_class_subject_path, class: "btn btn-primary" do %>
+          <i class="fa fa-plus"></i> New
+        <% end %>
+      </span>
+    </h1>
+  </div>
+</div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card-box">
-        <div class="header">
-          <h2 class="pull-left"><i class="fa fa-building"></i><span>Subjects</span></h2>
-          <%= link_to "New", new_admin_branch_class_subject_path, class: "btn btn-primary pull-right"%>
+  <div class="quick-actions_homepage">
+    <div class="quick-actions">
+      <% @subjects.each do |subject|%>
+        <div class="bg_lo span3 classe-block">
+          <h1><%= subject.title %></h1>
+          <div class="class-actions">
+            <%= link_to edit_admin_branch_class_subject_path(@branch_class, subject), class: "btn btn-primary btn-xs" do %>
+              edit 
+            <% end %>
+            <%= link_to admin_branch_class_subject_path(@branch_class, subject), class: "btn btn-xs btn-danger", method: :delete do %>
+              Delete 
+            <% end%>
+          </div>
         </div>
-        <div class="content table-responsive table-full-width">
-          <% @subjects.each do |subject|%>
-            <div class="col-sm-4 text-center">
-              <div class="custom-card">
-                <h3><%= subject.title %></h3>
-                <div class="show-pages">
-                  <%= link_to edit_admin_branch_class_subject_path(@branch_class, subject), class: "btn btn-primary btn-xs" do %>
-                    edit 
-                  <% end %>
-                  <%= link_to admin_branch_class_subject_path(@branch_class, subject), class: "btn btn-xs btn-danger", method: :delete do %>
-                    Delete 
-                  <% end%>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@ class Admin::StudentSectionsController < Admin::BaseController
   end
 
   def new
-    user_ids = @class_section.users.pluck(:id)
+    user_ids = @class_section.students.pluck(:id)
     @students = current_user.branch.users.students.where.not(id: user_ids)
     @student_section = StudentSection.new
     respond_to do |format|

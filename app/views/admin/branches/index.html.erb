@@ -1,60 +1,72 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Branches</a> </div>
+  <div class="custom-header">
+    <h1>Branches
+      <span class="pull-right">
+        <%= link_to new_admin_branch_path, class: "btn btn-primary" do %>
+          <i class="fa fa-school-cap"></i> New
+        <% end %>
+      </span>
+    </h1>
+  </div>
+</div>
+
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="header">
-              <span><h2>Branches</h2></span>
-              <span><%= link_to "New", new_admin_branch_path, class: "btn btn-primary pull-right"%></span>
-            </div>
-            <div class="content table-responsive table-full-width">
-              <table class="table table-striped">
-                <thead>
-                  <th>School Owner</th>
-                  <th>School Name</th>
-                  <th>Cover image</th>
-                  <th>Branch Name</th>
-                  <th>City</th>
-                  <th>Address</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </thead>
-                <tbody>
-                  <% @branches.each do |branch|%>
-                    <tr style="background-color: <%= '#d08f8f' if branch.inactive?%>">
-                      <td><%= branch.user.present? ? branch.user.full_name : "Not Assigned" %></td>
-                      <td><%= branch.id %></td>
-                      <td><%= branch.school.name %></td>
-                      <td><%= image_tag(branch.cover.url, class: "branch-img") %></td>
-                      <td><%= branch.branch_name %></td>
-                      <td><%= branch.city %></td>
-                      <td><%= branch.address %></td>
-                      <td><%= branch.status %></td>
-                      <td style="width: 174px;">
-                      <% if branch.user.blank? %>
-                        <%= link_to new_admin_branch_user_path(branch), class: "btn btn-warning btn-xs" do %>
-                          <i class="fa fa-user"></i>
-                        <% end %>
-                      <% else %>
-                        <%= link_to edit_admin_branch_user_path(branch,  branch.user), class: "btn btn-warning btn-xs" do %>
-                          <i class="fa fa-user"><i class="fa fa-pencil"></i></i>
-                        <% end %>
-                      <% end %>
-                        <%= link_to admin_branch_path(branch), class: "btn btn-primary btn-xs" do %>
-                          <i class="fa fa-eye"></i>
-                        <% end %>
-                        <%= link_to edit_admin_branch_path(branch), class: "btn btn-xs btn-success" do %>
-                          <i class="fa fa-pencil"></i>  
-                        <% end%>
-                        <%= link_to admin_branch_path(branch), class: "btn btn-xs btn-danger", method: :delete do %>
-                          <i class="fa fa-times"></i>  
-                        <% end%>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
+          <h5>All Branches</h5>
         </div>
+        <div class="widget-content nopadding">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <th>School Owner</th>
+              <th>School Name</th>
+              <th>Cover image</th>
+              <th>Branch Name</th>
+              <th>City</th>
+              <th>Address</th>
+              <th>Status</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <% @branches.each do |branch|%>
+                <tr style="background-color: <%= '#d08f8f' if branch.inactive?%>">
+                  <td><%= branch.users.school_admin.present? ? branch.users.school_admin.full_name : "Not Assigned" %></td>
+                  <td><%= branch.school.name %></td>
+                  <td><%= image_tag(branch.cover.url(:thumb), class: "branch-img") %></td>
+                  <td><%= branch.branch_name %></td>
+                  <td><%= branch.city %></td>
+                  <td><%= branch.address %></td>
+                  <td><%= branch.status %></td>
+                  <td style="width: 174px;">
+                  <% if branch.users.school_admin.blank? %>
+                    <%= link_to new_admin_branch_user_path(branch), class: "btn btn-warning btn-xs" do %>
+                      <i class="fa fa-user"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to edit_admin_branch_user_path(branch,  branch.users.school_admin), class: "btn btn-warning btn-xs" do %>
+                      <i class="fa fa-user"></i>
+                    <% end %>
+                  <% end %>
+                    <%= link_to admin_branch_path(branch), class: "btn btn-primary btn-xs" do %>
+                      <i class="fa fa-eye"></i>
+                    <% end %>
+                    <%= link_to edit_admin_branch_path(branch), class: "btn btn-xs btn-success" do %>
+                      <i class="fa fa-pencil"></i>  
+                    <% end%>
+                    <%= link_to admin_branch_path(branch), class: "btn btn-xs btn-danger", method: :delete do %>
+                      <i class="fa fa-times"></i>  
+                    <% end%>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

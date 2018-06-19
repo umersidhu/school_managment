@@ -1,0 +1,53 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Tests</a> </div>
+  <div class="custom-header">
+    <h1>Tests
+      <span class="pull-right">
+        <%= link_to new_admin_branch_class_section_section_subject_section_subject_test_path(@branch_class, @section, @section_subject), class: "btn btn-primary" do %>
+          <i class="fa fa-plus"></i> New
+        <% end %>
+      </span>
+    </h1>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
+          <h5>All Tests</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <table class= "table table-bordered table-stripped">
+            <thead>
+              <th>Test Name</th>
+              <th>Total Marks</th>
+              <th>Created Date</th>
+              <th>Assign Marks / Show Results</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <% @section_subject_tests.each do |section_subject_test| %>
+                <tr>
+                  <td><%= section_subject_test.name %></td>
+                  <td><%= section_subject_test.total_marks %></td>
+                  <td><%= section_subject_test.created_at.strftime("%d-%m-%Y") %></td>
+                  <td>
+                    <%if section_subject_test.user_tests.present? %>
+                    <%= link_to "Show Results", admin_branch_class_section_section_subject_section_subject_test_path(@branch_class, @section, @section_subject, section_subject_test),class: "btn btn-success" %>
+                    <% else %>
+                      <%= link_to "Assign Marks", new_admin_branch_class_section_section_subject_section_subject_test_user_test_path(@branch_class, @section, @section_subject, section_subject_test) %>
+                    <% end %>
+                  </td>
+                  <td><%= link_to admin_branch_class_section_section_subject_section_subject_test_path(@branch_class, @section, @section_subject, section_subject_test), class: "btn btn-danger", method: :delete do %> Delete <% end %> <%= link_to "Edit", edit_admin_branch_class_section_section_subject_section_subject_test_path(@branch_class, @section, @section_subject, section_subject_test), class: "btn btn-warning" %></td>
+                </tr>
+              <% end %>
+            </tbody>   
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

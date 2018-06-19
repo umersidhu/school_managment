@@ -2,6 +2,7 @@
   <thead>
     <th>Class</th>
     <th>Section</th>
+    <th>Subject</th>
     <th>Full Name</th>
     <th>Email</th>
     <th>Role</th>
@@ -9,9 +10,9 @@
   <tbody>
     <% @teachers.each do |teacher|%>
       <tr>
-        <% debugger %>
-        <td><%= teacher.branch.branch_class %></td>
-        <td><%= @class_section.section %></td>
+        <td><%= teacher.teaching_subjects.map{|ts| ts.section.branch_class.name if ts.section.id.eql? @class_section.id}.compact.join(",") %></td>
+        <td><%= teacher.teaching_subjects.map{|ts| ts.section.section if ts.section.id.eql? @class_section.id}.compact.join(",") %></td>
+        <td><%= teacher.teaching_subjects.map{|ts| ts.subject.title if ts.section.id.eql? @class_section.id}.compact.join(",") %></td>
         <td><%= teacher.full_name %></td>
         <td><%= teacher.email %></td>
         <td><%= teacher.role %></td>

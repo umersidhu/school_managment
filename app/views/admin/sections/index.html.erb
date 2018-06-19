@@ -1,24 +1,27 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current"><%= @branch_class.name %> Sections</a> </div>
+  <div class="custom-header">
+    <h1><%= @branch_class.name %> Sections 
+      <span class="pull-right">
+        <%= link_to new_admin_branch_class_section_path(@branch_class), class: "btn btn-primary" do %>
+          <i class="fa fa-plus"></i> New
+        <% end %>
+      </span>
+    </h1>
+  </div>
+</div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card-box">
-        <div class="header">
-          <h2 class="pull-left"><i class="fa fa-building"></i><span><%= @branch_class.name %> Sections</span></h2>
-          <%= link_to "New", new_admin_branch_class_section_path(@branch_class), class: "btn btn-primary pull-right"%>
+  <div class="quick-actions_homepage">
+    <div class="quick-actions">
+      <% @sections.each do |class_section|%>
+        <div class="bg_lo span3 classe-block">
+          <h1>
+            <%= link_to admin_branch_class_section_student_sections_path(@branch_class, class_section) do %><h3 class="text-center"><%= class_section.section.humanize %></h3><% end %>
+          </h1>
+          <div class="class-actions">
+          </div>
         </div>
-        <div class="content table-responsive table-full-width">
-          <% @sections.each do |class_section|%>
-            <div class="col-sm-4 text-center">
-              <div class="custom-card">
-                <%= link_to admin_branch_class_section_student_sections_path(@branch_class, class_section) do %><h3 class="text-center"><%= class_section.section.humanize %></h3><% end %>
-                <div class="show-pages">
-                  
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

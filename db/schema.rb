@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180520213413) do
+ActiveRecord::Schema.define(version: 20180613073929) do
 
   create_table "branch_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "branch_id"
@@ -55,6 +55,24 @@ ActiveRecord::Schema.define(version: 20180520213413) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "section_subject_tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "section_subject_id"
+    t.string "name"
+    t.float "total_marks", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_subject_id"], name: "index_section_subject_tests_on_section_subject_id"
+  end
+
+  create_table "section_subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "section_id"
+    t.bigint "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_section_subjects_on_section_id"
+    t.index ["subject_id"], name: "index_section_subjects_on_subject_id"
+  end
+
   create_table "sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "branch_class_id"
     t.integer "section"
@@ -66,9 +84,11 @@ ActiveRecord::Schema.define(version: 20180520213413) do
   create_table "student_sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "section_id"
+    t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["section_id"], name: "index_student_sections_on_section_id"
+    t.index ["subject_id"], name: "index_student_sections_on_subject_id"
     t.index ["user_id"], name: "index_student_sections_on_user_id"
   end
 
@@ -99,6 +119,16 @@ ActiveRecord::Schema.define(version: 20180520213413) do
     t.index ["section_id"], name: "index_teaching_subjects_on_section_id"
     t.index ["subject_id"], name: "index_teaching_subjects_on_subject_id"
     t.index ["user_id"], name: "index_teaching_subjects_on_user_id"
+  end
+
+  create_table "user_tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "section_subject_test_id"
+    t.bigint "user_id"
+    t.float "obtained_marks", limit: 24, default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_subject_test_id"], name: "index_user_tests_on_section_subject_test_id"
+    t.index ["user_id"], name: "index_user_tests_on_user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -6,7 +6,8 @@ class Admin::TeachingSubjectsController < Admin::BaseController
   end
 
   def new
-    @subjects = @branch_class.subjects
+    subject_ids = @class_section.subjects.pluck(:id)
+    @subjects = @branch_class.subjects.where.not(id: subject_ids)
     user_ids = @class_section.teachers.pluck(:id)
     @teachers = current_user.branch.users.teachers.where.not(id: user_ids)
     @teacher_section = TeachingSubject.new
@@ -16,7 +17,7 @@ class Admin::TeachingSubjectsController < Admin::BaseController
   end
 
   def create
-    debugger
+    @teachers = @class_section.teachers
     @teaching_subjects = TeachingSubject.new(teaching_subjects_params)
     @teaching_subjects.section_id =  params[:section_id]
     if @teaching_subjects.save

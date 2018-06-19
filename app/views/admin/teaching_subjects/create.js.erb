@@ -1,0 +1,2 @@
+$('#section-teachers').html("<%= escape_javascript(render partial: 'teachers', locals: {class_section: @class_section, teachers: @teachers} ) %>");
+$('#assign_teacher').modal('hide');

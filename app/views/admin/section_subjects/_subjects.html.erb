@@ -1,0 +1,13 @@
+<% @section_subjects.each do |section_subject|%>
+  <div class="bg_lo span3 classe-block">
+    <h1><%= section_subject.subject.title %></h1>
+      <div class="class-actions">
+        <%= link_to admin_branch_class_section_section_subject_path(@branch_class, @section, section_subject), class: "btn btn-xs btn-danger", method: :delete do %>
+          Delete 
+        <% end%>
+        <%= link_to admin_branch_class_section_section_subject_section_subject_tests_path(@branch_class, @section, section_subject), class: "btn btn-xs btn-success" do %>
+          Tests
+        <% end %>
+      </div>
+  </div>
+<% end %>

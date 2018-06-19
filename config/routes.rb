@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     root to: "dashboards#index"
     resources :branch_classes do
       resources :sections do
+        resources :section_subjects do
+          resources :section_subject_tests do
+            resources :user_tests
+          end
+        end
         resources :teaching_subjects
         resources :student_sections do
           collection do

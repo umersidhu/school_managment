@@ -18,8 +18,8 @@ class Admin::SubjectsController < Admin::BaseController
   def create
     @subject = Subject.new(subject_params)
     @subject.branch_class_id = @branch_class.id
-    if @subject.save
-      flash[:notice] = "#{ @subject.title} Class Created Successfully"
+    if @subject.save!
+      gflash :now, :success => "#{ @subject.title} Class Created Successfully"
       redirect_to admin_branch_class_subjects_path(@branch_class)
     else
       render 'new'
@@ -32,7 +32,7 @@ class Admin::SubjectsController < Admin::BaseController
   def update
     if @subject.update(subject_params)
       flash[:notice] = "#{ @subject.title} Subject Update Successfully"
-      redirect_to admin_subjects_path
+      redirect_to admin_branch_class_subjects_path(@branch_class)
     else
       render 'new'
     end
@@ -44,7 +44,7 @@ class Admin::SubjectsController < Admin::BaseController
     else
       flash[:alert] = "Unable to delete subject #{ @subject.title}"
     end
-    admin_branch_class_subjects_path(@branch_class)
+    redirect_to admin_branch_class_subjects_path(@branch_class)
   end
 
   private

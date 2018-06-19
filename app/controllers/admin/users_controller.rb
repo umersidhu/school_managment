@@ -54,7 +54,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def check_school_admin_exist
-    if @branch.user.present?
+    if @branch.users.school_admin.present?
       flash[:notice] = "School admin alredy Assigned to #{@branch.branch_name}"
       redirect_to admin_branches_path
     end

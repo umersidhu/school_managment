@@ -1,0 +1,2 @@
+$('#section_subjects_all').html("<%= escape_javascript(render partial: 'subjects', locals: {section_subjects: @section_subjects, subjects: @subjects } ) %>")
+$('#section_subjects').modal('hide');
