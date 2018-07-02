@@ -5,15 +5,17 @@
     <th>Full Name</th>
     <th>Email</th>
     <th>Role</th>
+    <th>Action</th>
   </thead>
   <tbody>
-    <% @class_section&.students.uniq.each do |user|%>
+    <% @class_section&.student_sections.uniq.each do |student_section|%>
       <tr>
         <td><%= @class_section.branch_class.name %></td>
         <td><%= @class_section.section %></td>
-        <td><%= user.full_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.role %></td>
+        <td><%= student_section.user.full_name %></td>
+        <td><%= student_section.user.email %></td>
+        <td><%= student_section.user.role %></td>
+        <td><%= link_to admin_branch_class_section_student_section_path(@branch_class, @class_section, student_section), class: "btn btn-xs btn-danger", method: :delete do %> Delete <% end %></td>
       </tr>
     <% end %>
   </tbody>

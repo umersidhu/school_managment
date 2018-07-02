@@ -1,0 +1,18 @@
+<%= form_for @fee, url: @fee.id.present?  ? admin_fee_path(@fee) : admin_fees_path, html:{class:"form-horizontal", "data-parsley-validate" => true } do |ff| %>
+  <div class="control-group">
+    <label class="control-label">Status :</label>
+    <div class="controls">
+      <%= ff.select :branch_class_id, @branch_classes.map{|branch_class| [branch_class.name.titleize, branch_class.id ]}, {prompt: "<----- select Class ----->"}, class: "span11", "aria-required" => true %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Amount :</label>
+    <div class="controls">
+      <%= ff.number_field :amount, class: "span11", placeholder: "Amount", required: true, "aria-required" => true %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= ff.submit "Submit", class: "btn btn-success" %>
+    <%= link_to "Back", admin_fees_path, class: "btn btn-primary pull-right" %>
+  </div>
+<% end %>

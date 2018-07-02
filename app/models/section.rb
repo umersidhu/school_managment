@@ -12,5 +12,7 @@ class Section < ApplicationRecord
   has_many   :section_subjects
   has_many   :subjects, through: :section_subjects
 
+  has_many   :attendances
+
   enum section: [:A, :B, :C, :D]
 end

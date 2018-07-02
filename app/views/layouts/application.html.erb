@@ -3,14 +3,50 @@
   <head>
     <title>Practice</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <!--  Fonts and icons     -->
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="<%= 'alert alert-danger' if alert.present?%>"><%= alert %></p>
-    <%= yield %>
+    <%= gflash %>
+    <% if current_user.present? %>
+      <%= render 'layouts/student/header' %>
+      <%= render 'layouts/student/sidebar' %>
+    <div id="content">
+      <%= yield %>
+    </div>
+      <%= render 'layouts/student/footer' %>
+    <% else %>
+      <p class="notice"><%= notice %></p>
+      <p class="<%= 'alert alert-danger' if alert.present?%>"><%= alert %></p>
+      <%= yield %>
+    <% end %>
+    <%= javascript_include_tag 'admin' %>
+    <script type="text/javascript">
+      // This function is called from the pop-up menus to transfer to
+      // a different page. Ignore if the value returned is a null string:
+      function goPage (newURL) {
+
+        // if url is empty, skip the menu dividers and reset the menu selection to default
+        if (newURL != "") {
+        
+          // if url is "-", it is this page -- reset the menu:
+          if (newURL == "-" ) {
+              resetMenu();            
+          } 
+          // else, send page to designated URL            
+          else {  
+            document.location.href = newURL;
+          }
+        }
+      }
+
+      // resets the menu selection upon entry to this page:
+      function resetMenu() {
+         document.gomenu.selector.selectedIndex = 2;
+      }
+    </script>
   </body>
 </html>

@@ -10,9 +10,9 @@
   <tbody>
     <% @teachers.each do |teacher|%>
       <tr>
-        <td><%= teacher.teaching_subjects.map{|ts| ts.section.branch_class.name if ts.section.id.eql? @class_section.id}.compact.join(",") %></td>
-        <td><%= teacher.teaching_subjects.map{|ts| ts.section.section if ts.section.id.eql? @class_section.id}.compact.join(",") %></td>
-        <td><%= teacher.teaching_subjects.map{|ts| ts.subject.title if ts.section.id.eql? @class_section.id}.compact.join(",") %></td>
+        <td><%= teacher.teaching_subjects.map{|ts| ts&.section&.branch_class&.name if ts&.section&.id&.eql? @class_section.id}.compact.join(",") %></td>
+        <td><%= teacher.teaching_subjects.map{|ts| ts&.section&.section if ts&.section&.id&.eql? @class_section&.id}.compact.join(",") %></td>
+        <td><%= teacher.teaching_subjects.map{|ts| ts&.subject&.title if ts&.section&.id&.eql? @class_section&.id}.compact.join(",") %></td>
         <td><%= teacher.full_name %></td>
         <td><%= teacher.email %></td>
         <td><%= teacher.role %></td>

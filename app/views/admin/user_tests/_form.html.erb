@@ -4,13 +4,13 @@
     <th>Obtained Marks</th>
   </thead>
   <tbody> 
-    <%= form_tag admin_branch_class_section_section_subject_section_subject_test_user_tests_path(@branch_class, @section, @section_subject), html:{ class: "form-horizontal" }, method: :post do %>
+    <%= form_tag admin_branch_class_section_section_subject_section_subject_test_user_tests_path(@branch_class, @section, @section_subject), html:{ class: "form-horizontal" } do |f| %>
       <% @user_tests.each do |user_test| %>
         <%= fields_for 'user_tests[]', user_test do |ut| %>
           <tr>
             <td><%= user_name(user_test.user_id)%> :</td>
             <td>
-              <%= ut.number_field :obtained_marks, class: "span11", placeholder: "Enter Test Number", "required" => "", "aria-required" => true %>
+              <%= ut.number_field :obtained_marks, class: "span11 form-control", placeholder: "Enter Test Number", "required" => "", "aria-required" => true %>
               <%= ut.hidden_field :user_id, value: user_test.user_id %>
             </td>
           </tr>
@@ -22,3 +22,4 @@
     <% end %>
   </tbody>
 </table>
+

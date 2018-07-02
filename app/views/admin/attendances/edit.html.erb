@@ -1,0 +1,37 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Edit Attendance</a> </div>
+  <div class="custom-header">
+    <h1>Edit Attendance
+    </h1>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <span class="span12">  
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-align-justify"></i> </span>
+          <h5>Edit Attendance</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <table class="table table-bordered table-stripped">
+            <thead>
+              <th>Student Name</th>
+              <th>Mark Attendance</th>
+            </thead>
+            <tbody> 
+              <%= form_for [:admin, @branch_class, @section, @attendance], html:{ class: "form-horizontal" } do |f| %>
+                <tr>
+                  <td><%= user_name(@attendance.user_id)%> :</td>
+                  <td><%= f.select :status, Attendance.statuses.map{|key, value| [key.titleize, key ]}, {}, class: "form-control", class: "span11", "aria-required" => true %></td>
+                </tr>
+                <div class="form-actions">
+                  <%= f.submit "Submit", class: "btn btn-success" %>
+                </div>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>

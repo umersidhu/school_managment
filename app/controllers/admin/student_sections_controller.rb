@@ -1,5 +1,5 @@
 class Admin::StudentSectionsController < Admin::BaseController
-  before_action :find_class_branch, :find_section, only: [:new, :index, :section_students, :create]
+  before_action :find_class_branch, :find_section, only: [:new, :index, :section_students, :create, :destroy]
 
   def index
   end
@@ -25,8 +25,20 @@ class Admin::StudentSectionsController < Admin::BaseController
     end
   end
 
+  def destroy
+    ss = StudentSection.find_by(id: params[:id])
+    if ss.present?
+      ss.destroy
+    else
+      flash[:notice] = "Couldn't delete the student"
+    end
+    redirect_to section_students_admin_branch_class_section_student_sections_path(@branch_class, @class_section)
+  end
+
   def section_students
   end
+
+  private
     
   def find_class_branch
     @branch_class = BranchClass.friendly.find(params[:branch_class_id])

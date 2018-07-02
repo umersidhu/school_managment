@@ -34,6 +34,9 @@
   }
 }
 
+.block-color{
+  color: blue;
+}
 .classe-block:hover {
   box-shadow: 0 2px 18px 0 rgba(0,0,0,0.35);
   background-color: gray;
@@ -70,4 +73,19 @@ p {
 }
 .well {
   margin-top: 20px;
+}
+
+.date-box{
+  background: #bcb8b7;
+}
+
+.date-actions{
+  .span3{
+    width: 16% !important;
+  }
+}
+.month-actions{
+  .span3{
+    width: 29% !important;
+  }
 }

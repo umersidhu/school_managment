@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many   :subjects, through: :teaching_subjects
 
   has_many   :user_tests
+  has_many   :attendances
+
+  has_one    :user_fee
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

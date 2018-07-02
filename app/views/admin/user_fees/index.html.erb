@@ -1,0 +1,11 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current"><%= @branch_class.name %> Students Fee </a> </div>
+  <div class="custom-header">
+    <h1><%= @branch_class.name %> Students Fee </h1>
+  </div>
+</div>
+<div class="container-fluid">
+  <div id="dates">
+    <%= render partial: "months", locals: {months: @month, branch_class: @branch_class, section: @section}%>
+  </div>
+</div>

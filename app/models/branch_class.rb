@@ -1,5 +1,6 @@
 class BranchClass < ApplicationRecord
   belongs_to :branch
+  has_one :fee
   has_many :sections, dependent: :destroy
   has_many :subjects, dependent: :destroy
   extend FriendlyId

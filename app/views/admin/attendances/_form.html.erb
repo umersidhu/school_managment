@@ -1,0 +1,24 @@
+<table class="table table-bordered table-stripped">
+  <thead>
+    <th>Student Name</th>
+    <th>Mark Attendance</th>
+  </thead>
+  <tbody> 
+    <%= form_tag admin_branch_class_section_attendances_path(@branch_class, @section), html:{ class: "form-horizontal" } do |f| %>
+      <% @attendances.each do |attendance| %>
+        <%= fields_for 'attendances[]', attendance do |a| %>
+          <tr>
+            <td><%= user_name(attendance.user_id)%> :</td>
+            <td><%= a.select :status, Attendance.statuses.map{|key, value| [key.titleize, key ]}, {}, class: "form-control", class: "span11", "aria-required" => true %>
+              <%= a.hidden_field :user_id, value: attendance.user_id %>
+              <%= a.hidden_field :attendance_date, value: attendance.attendance_date %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <div class="form-actions">
+        <%= submit_tag %>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+

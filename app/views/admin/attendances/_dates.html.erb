@@ -1,0 +1,23 @@
+<div class="row-fluid">
+  <div class="clearfix">
+    <%= link_to "Previous Month", previous_month_dates_admin_branch_class_section_attendances_path(@branch_class, @section, current_month: @month_dates.first), remote: true, class: "pull-left btn btn-success" %>
+    <%= link_to "Next Month", next_month_dates_admin_branch_class_section_attendances_path(@branch_class, @section, current_month: @month_dates.first), remote: true, class: "pull-right btn btn-success" %>
+  </div>
+</div>
+
+<div class="quick-actions_homepage">
+  <div class="quick-actions date-actions">
+    <% @month_dates.each do |month_date| %>
+      <% link = check_date(month_date, @section) ? show_attendances_admin_branch_class_section_attendances_path(@branch_class, @section, month_date: month_date) : new_admin_branch_class_section_attendance_path(@branch_class, @section, month_date: month_date) %>
+      <%= link_to link do %>
+        <div class="date-box span3 classe-block <%= check_date(month_date, @section) ? 'block-color' : ''%>">
+          <h3 class="text-center">
+            <%= month_date.strftime("%b %d") %>
+          </h3>
+          <div class="class-actions">
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

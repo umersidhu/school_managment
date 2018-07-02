@@ -6,8 +6,7 @@ class Admin::TeachingSubjectsController < Admin::BaseController
   end
 
   def new
-    subject_ids = @class_section.subjects.pluck(:id)
-    @subjects = @branch_class.subjects.where.not(id: subject_ids)
+    @subjects = @branch_class.subjects
     user_ids = @class_section.teachers.pluck(:id)
     @teachers = current_user.branch.users.teachers.where.not(id: user_ids)
     @teacher_section = TeachingSubject.new

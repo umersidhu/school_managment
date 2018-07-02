@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="bg_lo span3 classe-block">
-          <h1><%= link_to section_students_admin_branch_class_section_student_sections_path(@branch_class, @class_section) do %>
+          <h1><%= link_to admin_branch_class_section_user_fees_path(@branch_class, @class_section) do %>
               <h3 class="text-center">
                 Students Fee
               </h3>
@@ -38,6 +38,15 @@
           <h1><%= link_to admin_branch_class_section_section_subjects_path(@branch_class, @class_section) do %>
               <h3 class="text-center">
                 <%= @branch_class.name %> (<%= @class_section.section %>) Subjects
+              </h3>
+            <% end %></h1>
+          <div class="class-actions">
+          </div>
+        </div>
+        <div class="bg_lo span3 classe-block">
+          <h1><%= link_to admin_branch_class_section_attendances_path(@branch_class, @class_section) do %>
+              <h3 class="text-center">
+                <%= @branch_class.name %> (<%= @class_section.section %>) Attendances
               </h3>
             <% end %></h1>
           <div class="class-actions">

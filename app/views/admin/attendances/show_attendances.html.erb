@@ -1,0 +1,43 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">View Attendance</a> </div>
+  <div class="custom-header">
+    <h1>View Attendance
+      <span class="pull-right">
+        
+      </span>
+    </h1>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
+          <h5>View Attendance</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <table class= "table table-bordered table-stripped">
+            <thead>
+              <th>Student Name</th>
+              <th>Attendance</th>
+              <th>Date</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <% @attendances.each do |attendance| %>
+                <tr>
+                  <td><%= attendance.user.full_name %></td>
+                  <td><%= attendance.status %></td>
+                  <td><%= attendance.attendance_date %></td>
+                  <td><%= link_to "Edit", edit_admin_branch_class_section_attendance_path(@branch_class, @section, attendance), class: "btn btn-warning" %></td>
+                </tr>
+              <% end %>
+            </tbody>   
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Fees Structure</a> </div>
+  <div class="custom-header">
+    <h1>Fees Structure 
+      <span class="pull-right">
+        <%= link_to new_admin_fee_path, class: "btn btn-primary" do %>
+          <i class="fa fa-graduation-cap"></i> New
+        <% end %>
+      </span>
+    </h1>
+  </div>
+</div>
+<div class="container-fluid">
+  <hr>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-th"></i> </span>
+          <h5>All Fees Structure</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Ammount</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @feeses.each do |fee|%>
+                <tr class="odd gradeA">
+                  <td><%= fee.branch_class.name %></td>
+                  <td><%= fee.amount %></td>
+                  <td>
+                    <%= link_to edit_admin_fee_path(fee), class: "btn btn-xs btn-success" do %>
+                      <i class="fa fa-pencil"></i>  
+                    <% end%>
+                    <%= link_to admin_fee_path(fee), class: "btn btn-xs btn-danger", method: :delete do %>
+                      <i class="fa fa-times"></i>  
+                    <% end%>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,9 +22,15 @@ class Admin::UserTestsController < Admin::BaseController
   end
 
   def edit
+    
   end
 
   def update
+    if @user_test.update(user_test_params)
+      redirect_to admin_branch_class_section_section_subject_section_subject_test_path(@branch_class, @section, @section_subject, @section_subject_test)
+    else
+      render :edit
+    end 
   end
 
   private
@@ -47,6 +53,10 @@ class Admin::UserTestsController < Admin::BaseController
 
   def find_user_test
     @user_test = UserTest.find_by_id(params[:id])
+  end
+
+  def user_test_params
+    params.require(:user_test).permit(:user_id, :section_subject_test_id, :obtained_marks)
   end
 
 end

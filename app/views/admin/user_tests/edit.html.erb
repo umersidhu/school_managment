@@ -1,2 +1,39 @@
-<%= form_for[:admin, @branch_class, @section, @section_subject, @section_subject_test, @user_test] do |f| %>
-<% end %>
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Edit Test Marks</a> </div>
+  <div class="custom-header">
+    <h1>Edit Test Marks
+    </h1>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <span class="span12">  
+      <div class="widget-box">
+        <div class="widget-title"> <span class="icon"> <i class="fa fa-align-justify"></i> </span>
+          <h5>Edit Test Marks</h5>
+        </div>
+        <div class="widget-content nopadding">
+          <table class="table table-bordered table-stripped">
+            <thead>
+              <th>Student Name</th>
+              <th>Obtained Marks</th>
+            </thead>
+            <tbody> 
+              <%= form_for [:admin, @branch_class, @section, @section_subject, @section_subject_test, @user_test], html:{ class: "form-horizontal" } do |f| %>
+                <tr>
+                  <td><%= user_name(@user_test.user_id)%> :</td>
+                  <td>
+                    <%= f.number_field :obtained_marks, class: "span11 form-control", placeholder: "Enter Test Number", "required" => "", "aria-required" => true %>
+                  </td>
+                </tr>
+                <div class="form-actions">
+                  <%= f.submit "Submit", class: "btn btn-success" %>
+                </div>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
