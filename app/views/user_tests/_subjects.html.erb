@@ -1,0 +1,14 @@
+<% if @subjects.present? %>
+  <% @subjects.each do |subject|%>
+    <div class="span3 classe-block">
+      <h1><%= subject.title %></h1>
+        <div class="class-actions">
+          <%= link_to user_subject_test_report_user_tests_path(subject: subject.id), class: "btn btn-xs btn-success" do %>
+            Report
+          <% end %>
+        </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>You have not assigned any subject </p>
+<% end %>

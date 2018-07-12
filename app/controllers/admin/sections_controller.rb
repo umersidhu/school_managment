@@ -19,7 +19,7 @@ class Admin::SectionsController < Admin::BaseController
     @section.branch_class_id = @branch_class.id
     if @section.save
       flash[:notice] = "#{ @section.section} of Class #{@branch_class.name} Created Successfully"
-      redirect_to admin_branch_classes_path
+      redirect_to admin_branch_class_sections_path(@branch_class)
     else
       render 'new'
     end
@@ -31,19 +31,19 @@ class Admin::SectionsController < Admin::BaseController
   def update
     if @section.update(section_params)
       flash[:notice] = "#{ @section.section} of Class #{@branch_class.name} Update Successfully"
-      redirect_to admin_branch_classes_path
+      redirect_to admin_branch_class_sections_path(@branch_class)
     else
       render 'edit'
     end
   end
 
   def destroy
-    if @branch_class.destroy
+    if @section.destroy
       flash[:notice] = "#{ @branch_class.name} Branch Deleted Successfully"
     else
       flash[:alert] = "Unable to delete branch_class #{ @branch_class.name}"
     end
-    redirect_to admin_branch_classes_path
+    redirect_to admin_branch_class_sections_path(@branch_class)
   end
 
   private

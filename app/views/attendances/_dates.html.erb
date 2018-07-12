@@ -1,0 +1,24 @@
+<div class="row-fluid">
+  <div class="clearfix">
+    <%= link_to "Previous Month", previous_month_dates_attendances_path( current_month: @month_dates.first), remote: true, class: "pull-left btn btn-success" %>
+    <%= link_to "Next Month", next_month_dates_attendances_path(current_month: @month_dates.first), remote: true, class: "pull-right btn btn-success" %>
+  </div>
+</div>
+
+<div class="quick-actions_homepage">
+  <div class="quick-actions date-actions">
+    <% @month_dates.each do |month_date| %>
+      <% status = user_attendance(month_date.strftime("%b %d")) %>
+      <%= link_to "#" do %>
+
+        <div class="<%= status == 'present' ? 'present-date-box' : ( status == 'absent' ? 'absent-date-box' : ( status == 'leave' ? 'leave-date-box' : 'date-box')) %> span3 classe-block">
+          <h3 class="text-center">
+            <%= month_date.strftime("%b %d") %>
+          </h3>
+          <div class="class-actions">
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

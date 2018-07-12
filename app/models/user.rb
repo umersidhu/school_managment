@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many   :user_tests
   has_many   :attendances
 
-  has_one    :user_fee
+  has_many    :user_fee
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

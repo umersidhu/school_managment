@@ -14,11 +14,13 @@
   <div class="quick-actions_homepage">
     <div class="quick-actions">
       <% @sections.each do |class_section|%>
-        <div class="bg_lo span3 classe-block">
+        <div class="span3 classe-block">
           <h1>
             <%= link_to admin_branch_class_section_student_sections_path(@branch_class, class_section) do %><h3 class="text-center"><%= class_section.section.humanize %></h3><% end %>
           </h1>
           <div class="class-actions">
+            <%= link_to "Edit", edit_admin_branch_class_section_path(@branch_class, class_section), class: "btn btn-success" %>
+            <%= link_to "Delete", admin_branch_class_section_path(@branch_class, class_section), class: "btn btn-danger", method: :Delete %>
           </div>
         </div>
       <% end %>

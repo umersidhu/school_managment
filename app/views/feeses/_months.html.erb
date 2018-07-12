@@ -1,0 +1,21 @@
+<div class="row-fluid">
+  <div class="clearfix">
+    
+  </div>
+</div>
+
+<div class="quick-actions_homepage">
+  <div class="quick-actions date-actions month-actions">
+    <% @months.each do |month| %>
+      <%= link_to "#" do %>
+        <div class="<%= user_fee(month) == 'submitted' ? 'present-date-box' : 'date-box' %> span3 classe-block ">
+          <h3 class="text-center">
+            <%= month %>
+          </h3>
+          <div class="class-actions">
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -17,17 +17,19 @@ class Admin::UserFeesController < Admin::BaseController
     @students = @section.students
     @user_feeses = []
     @students.each do |student_fee|
-      @user_feeses << UserFee.new(user_id: student_fee.id, fee_id: @branch_class.fee.id, month: params[:year_month].to_date)
+      unless student_fee.user_fee&.pluck(:month).include? params[:year_month].to_date
+        @user_feeses << UserFee.new(user_id: student_fee.id, fee_id: @branch_class.fee.id, month: params[:year_month].to_date)
+      end
     end
   end
 
   def create
     user_feeses = []
     params[:user_feeses].each do |user_fee|
-      user_feeses << UserFee.new(user_id: user_fee[:user_id], fee_id: @branch_class.fee.id, month: user_fee[:user_fee_date], status: user_fee[:status])
+      user_feeses << UserFee.new(user_id: user_fee[:user_id], fee_id: @branch_class.fee.id, month: user_fee[:fee_month], status: user_fee[:status])
     end
     UserFee.import user_feeses
-    redirect_to admin_branch_class_section_attendances_path(@branch_class, @section)
+    redirect_to admin_branch_class_section_user_fees_path(@branch_class, @section)
   end
 
   def edit

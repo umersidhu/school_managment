@@ -3,6 +3,18 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "visitors#index"
+  resources :user_tests do
+    collection do
+      get :user_subject_test_report
+    end
+  end
+  resources :attendances do
+    collection do
+      get :previous_month_dates
+      get :next_month_dates
+    end
+  end
+  resources :feeses
 
   namespace :admin do
     root to: "dashboards#index"

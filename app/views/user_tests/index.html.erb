@@ -1,0 +1,20 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Subjects</a> </div>
+  <div class="custom-header">
+    <h1>Subjects 
+      <span class="pull-right">
+      
+      </span>
+    </h1>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="quick-actions_homepage">
+    <div class="quick-actions">
+      <div id= "section_subjects_all">
+        <%= render partial: "subjects", locals: {subjects: @subjects} %>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="section_subjects"></div>

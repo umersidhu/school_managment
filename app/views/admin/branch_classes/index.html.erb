@@ -14,7 +14,7 @@
   <div class="quick-actions_homepage">
     <div class="quick-actions">
       <% @branch_classes.each do |branch_class|%>
-        <div class="bg_lo span3 classe-block">
+        <div class="span3 classe-block">
           <h1><%= branch_class.name %></h1>
           <div class="class-actions">
             <%= link_to admin_branch_class_subjects_path(branch_class), class: "btn btn-danger btn-xs" do %>

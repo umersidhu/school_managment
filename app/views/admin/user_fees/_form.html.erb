@@ -3,8 +3,21 @@
     <th>Student Name</th>
     <th>Fee Submition Status</th>
   </thead>
-  <tbody> 
-    <%= form_tag admin_branch_class_section_user_fees_path(@branch_class, @section), html:{ class: "form-horizontal" } do |f| %>
+  <tbody>
+    <% @students.each do |st| %> 
+      <% if st.user_fee&.pluck(:month).include? params[:year_month].to_date %>
+        <tr>
+          <td>
+            <%= st.full_name %>
+          </td>
+          <td>
+            <p class="btn btn-success">Submitted</p>
+          </td>     
+        </tr>
+      <% end %>
+    <% end %>
+    <% if @user_feeses.present? %>
+      <%= form_tag admin_branch_class_section_user_fees_path(@branch_class, @section), html:{ class: "form-horizontal" } do |f| %>
       <% @user_feeses.each do |user_fees| %>
         <%= fields_for 'user_feeses[]', user_fees do |f| %>
           <tr>
@@ -18,6 +31,7 @@
       <div class="form-actions">
         <%= submit_tag %>
       </div>
+      <% end %>
     <% end %>
   </tbody>
 </table>

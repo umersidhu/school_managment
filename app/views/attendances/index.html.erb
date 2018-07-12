@@ -1,0 +1,18 @@
+<div id="content-header">
+  <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current"> Attendance Page </a> </div>
+  <div class="custom-header">
+    <h1><%= current_user.full_name %> Attendance </h1>
+  </div>
+  <div class="custom-header text-center">
+  	<p class="btn btn-success">Present</p>
+  	<p class="btn btn-danger">Absent</p>
+  	<p class="btn btn-warning">Leave</p>
+  	<p class="btn">Not Marked</p>
+  </div>
+  <hr>
+</div>
+<div class="container-fluid">
+  <div id="u_at_dates">
+    <%= render partial: "dates", locals: {month_dates: @month_dates}%>
+  </div>
+</div>

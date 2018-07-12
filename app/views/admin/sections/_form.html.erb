@@ -11,7 +11,7 @@
   <div class="control-group">
     <label class="control-label">Section Name :</label>
     <div class="controls">
-      <%= f.select :section, Section.sections.map{|key, value| [key.titleize, key ]},{prompt: "<---Select Section--->"}, class: "form-control", class: "span11",required: true, "aria-required" => true %>
+      <%= f.select :section, Section.sections.map{|key, value| [key.titleize, key] if !@branch_class&.sections&.pluck(:section).include? key && @section.id.blank? }.compact, {prompt: "<---Select Section--->"}, class: "form-control", class: "span11",required: true, "aria-required" => true %>
     </div>
   </div>
   <div class="form-actions"> 

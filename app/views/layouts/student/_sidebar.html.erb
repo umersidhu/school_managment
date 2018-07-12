@@ -1,6 +1,24 @@
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="fa fa-home"></i> Dashboard</a>
   <ul>
+    <li class="<%= 'active' if current_page?(user_tests_path)%>">
+      <%= link_to user_tests_path do %>
+        <i class="icon-paste"></i>
+        <span>Tests</span>
+      <% end %>
+    </li>
+    <li class="<%= 'active' if current_page?(attendances_path)%>">
+      <%= link_to attendances_path do %>
+        <i class="icon-edit"></i>
+        <span>Attendances</span>
+      <% end %>
+    </li>
+    <li class="<%= 'active' if current_page?(feeses_path)%>">
+      <%= link_to feeses_path do %>
+        <i class="icon-money"></i>
+        <span>Fees</span>
+      <% end %>
+    </li>
     <!-- <li class="submenu"> <a href="#"><i class="fa fa-info-sign"></i> <span>Error</span> <span class="label label-important">4</span></a>
       <ul>
         <li><a href="error403.html">Error 403</a></li>
