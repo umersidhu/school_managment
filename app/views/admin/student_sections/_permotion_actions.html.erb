@@ -1,0 +1,2 @@
+<td><%= student_section.user.full_name %></td>
+<td><%= select_tag 'permotion_status', options_for_select(StudentSection.statuses, params[:permotion_status]), class: ' form-control active_inactive filter-text'%></td>

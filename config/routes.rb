@@ -31,6 +31,7 @@ Rails.application.routes.draw do
         resources :student_sections do
           collection do
             get :section_students
+            get :students_permotion
           end
         end
         resources :attendances do 

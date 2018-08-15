@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20180620103047) do
   create_table "branch_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "branch_id"
     t.string "name"
-    t.integer "section"
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -104,6 +103,7 @@ ActiveRecord::Schema.define(version: 20180620103047) do
   create_table "student_sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
     t.bigint "section_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["section_id"], name: "index_student_sections_on_section_id"

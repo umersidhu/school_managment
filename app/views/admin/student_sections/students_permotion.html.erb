@@ -1,11 +1,7 @@
  <div id="content-header">
   <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="fa fa-home"></i> Home</a> <a href="#" class="current">Students of <%= @class_section.branch_class.name %> (<%= @class_section.section %>)</a> </div>
   <div class="custom-header">
-    <h1>Students 
-      <span class="pull-right">
-        <%= link_to "Assign Students", new_admin_branch_class_section_student_section_path(@branch_class, @class_section), class: "btn btn-primary pull-right m-l", remote: true%>
-        <%= link_to "Students Permotion", students_permotion_admin_branch_class_section_student_sections_path(@branch_class, @class_section), class: "btn btn-success pull-right"%>
-      </span>
+    <h1>Students Permotion 
     </h1>
   </div>
 </div>
@@ -18,11 +14,23 @@
           <h5>All Students</h5>
         </div>
         <div class="widget-content nopadding" id= "section-students">
-          <%= render partial: "students", locals: {class_section: @class_section}%>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <th>Full Name</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <% @class_section&.student_sections.uniq.each do |student_section|%>
+                <tr>
+                  <div id="permotion-actions">
+                    <%= render partial: "permotion_actions", locals: {student_section: student_section}%>
+                  </div>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div id="student-modal">
 </div>

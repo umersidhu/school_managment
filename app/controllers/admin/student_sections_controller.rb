@@ -1,5 +1,5 @@
 class Admin::StudentSectionsController < Admin::BaseController
-  before_action :find_class_branch, :find_section, only: [:new, :index, :section_students, :create, :destroy]
+  before_action :find_class_branch, :find_section, only: [:new, :index, :section_students, :create, :destroy, :students_permotion]
 
   def index
   end
@@ -36,6 +36,9 @@ class Admin::StudentSectionsController < Admin::BaseController
   end
 
   def section_students
+  end
+
+  def students_permotion
   end
 
   private
